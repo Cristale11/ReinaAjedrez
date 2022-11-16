@@ -26,6 +26,14 @@ public Reina(){
 	color = color.BLANCO;
 	posicion = new Posicion(1,'d');
 }
-
+private Reina(Color color) {
+	if (color == Color.NEGRO) {
+		posicion = new Posicion(8, 'd');
+		this.color = color;
+	}else if (color == Color.BLANCO) {
+		posicion = new Posicion(1, 'd');
+		this.color = color;
+	}
+}
 
 }

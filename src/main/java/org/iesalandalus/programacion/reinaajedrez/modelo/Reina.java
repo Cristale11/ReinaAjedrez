@@ -43,50 +43,38 @@ public class Reina {
 		}
 	}
 
-	public void mover(Direccion direccion, int Pasos) throws OperationNotSupportedException {
+	public void mover(Direccion direccion, int pasos) throws OperationNotSupportedException {
 		if (direccion == null) {
 			throw new NullPointerException("ERROR: La dirección no puede ser nula.");
-		} else if (Pasos <= 1 || Pasos >= 7) {
+		} else if (pasos <= 1 || pasos >= 7) {
 			throw new OperationNotSupportedException("ERROR: Movimiento no válido (se sale del tablero).");
 		}
-		switch (direccion) {
-		case NORTE:
-			if (color == Color.BLANCO) {
-				posicion = new Posicion(2, 'd');
-			} else if (color == Color.NEGRO) {
-				posicion = new Posicion(8, 'a');
-			}
-		case NORESTE:
-			if (color == Color.BLANCO) {
-				posicion = new Posicion(3, 'e');
-			}
-		case ESTE:
-			if (color == Color.BLANCO) {
-				posicion = new Posicion(3, 'f');
-			}
-		case SURESTE:
-			if (color == Color.BLANCO) {
-				posicion = new Posicion(2, 'g');
-			}
-		case SUR:
-			if (color == Color.BLANCO) {
-				posicion = new Posicion(1, 'g');
-			} else if (color == Color.NEGRO) {
-				posicion = new Posicion(7, 'd');
-			}
-		case SUROESTE:
-			if (color == Color.NEGRO) {
-				posicion = new Posicion(6, 'c');
-			}
-		case OESTE:
-			if (color == Color.NEGRO) {
-				posicion = new Posicion(6, 'b');
-			}
-		case NOROESTE:
-			if (color == Color.NEGRO) {
-				posicion = new Posicion(7, 'a');
-			}
-		}
+        switch (direccion) {
+        case NORTE:
+            this.posicion = new Posicion(this.posicion.getFila() + pasos, this.posicion.getColumna());
+            break;
+        case NORESTE:
+            this.posicion = new Posicion(this.posicion.getFila() + pasos, (char) (this.posicion.getColumna() + pasos));
+            break;
+        case NOROESTE:
+        this.posicion = new Posicion(this.posicion.getFila() +pasos, (char) (this.posicion.getColumna() - pasos));
+        break;
+        case SUR:
+            this.posicion = new Posicion(this.posicion.getFila() - pasos, this.posicion.getColumna());
+        break;
+        case SURESTE:
+            this.posicion = new Posicion(this.posicion.getFila() - pasos, (char) (this.posicion.getColumna() + pasos));
+        break;
+        case SUROESTE:
+            this.posicion = new Posicion(this.posicion.getFila() - pasos, (char) (this.posicion.getColumna() -pasos));
+            break;
+        case ESTE:
+            this.posicion = new Posicion(this.posicion.getFila(), (char) (this.posicion.getColumna() + pasos));
+            break;
+        case OESTE:
+            this.posicion= new Posicion(this.posicion.getFila(), (char) (this.posicion.getColumna() - pasos));
+            break;
+        }
 	}
 
 	@Override

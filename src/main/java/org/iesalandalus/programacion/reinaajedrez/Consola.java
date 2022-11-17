@@ -16,4 +16,9 @@ public static void elegirOpcionMenu() {
 	System.out.println("Selecciona una opcion del menu:");
 
 }
+public static void elegirOpcion() {
+	System.out.println("Selecciona un color");
+	System.out.println("1.- Rojo");
+	System.out.println("2.- Azul");
+}
 }

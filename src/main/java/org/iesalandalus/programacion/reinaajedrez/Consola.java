@@ -47,4 +47,7 @@ public class Consola {
 		System.out.println("Selecciona la cantidad de pasos que quieras dar");
 
 	}
+	public static void despedirse() {
+		System.out.println("Adioossss");
+	}
 }

@@ -16,14 +16,14 @@ public class Consola {
 	}
 
 	public static void elegirOpcionMenu() {
-		System.out.println("Selecciona una opcion del menu:");
+		System.out.print("Selecciona una opcion del menu:");
 
 	}
 
 	public static void elegirOpcion() {
-		System.out.println("Selecciona un color");
-		System.out.println("1.- Rojo");
-		System.out.println("2.- Azul");
+		System.out.println("1.- Blanca");
+		System.out.println("2.- Negra");
+		System.out.print("Selecciona un color: ");
 	}
 
 	public static void mostrarMenuDirecciones() {
@@ -40,7 +40,7 @@ public class Consola {
 
 	public static void elegirDireccion() {
 		System.out.println("Selecciona la direccion");
-		System.out.println("Introduce una opcion valida: ");
+		System.out.print("Introduce una opcion valida: ");
 	}
 
 	public static void elegirPasos() {

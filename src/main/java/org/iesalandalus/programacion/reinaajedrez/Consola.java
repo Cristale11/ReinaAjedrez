@@ -12,5 +12,8 @@ public static void mostrarMenu() {
 	System.out.println("3.- Mover posicion");
 	System.out.println("4.- Salir");
 }
+public static void elegirOpcionMenu() {
+	System.out.println("Selecciona una opcion del menu:");
 
+}
 }

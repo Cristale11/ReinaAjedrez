@@ -22,7 +22,7 @@ public static void elegirOpcion() {
 	System.out.println("2.- Azul");
 }
 public static void mostrarMenuDirecciones() {
-	System.out.println("Selecciona una direccion:");
+	System.out.println("Tipos de direcciones:");
 	System.out.println("1.- NORTE");
 	System.out.println("2.- NORESTE");
 	System.out.println("3.- ESTE");
@@ -31,5 +31,9 @@ public static void mostrarMenuDirecciones() {
 	System.out.println("6.- SUROESTE");
 	System.out.println("7.- OESTE");
 	System.out.println("8.- NOROESTE");
+}
+public static void elegirDireccion() {
+	System.out.println("Selecciona la direccion");
+	System.out.println("Introduce una opcion valida: ");
 }
 }

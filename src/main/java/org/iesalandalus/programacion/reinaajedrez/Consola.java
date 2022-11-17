@@ -21,4 +21,15 @@ public static void elegirOpcion() {
 	System.out.println("1.- Rojo");
 	System.out.println("2.- Azul");
 }
+public static void mostrarMenuDirecciones() {
+	System.out.println("Selecciona una direccion:");
+	System.out.println("1.- NORTE");
+	System.out.println("2.- NORESTE");
+	System.out.println("3.- ESTE");
+	System.out.println("4.- SURESTE");
+	System.out.println("5.- SUR");
+	System.out.println("6.- SUROESTE");
+	System.out.println("7.- OESTE");
+	System.out.println("8.- NOROESTE");
+}
 }

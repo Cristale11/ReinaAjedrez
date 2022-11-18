@@ -46,35 +46,72 @@ public class Reina {
 	public void mover(Direccion direccion, int pasos) throws OperationNotSupportedException {
 		if (direccion == null) {
 			throw new NullPointerException("ERROR: La dirección no puede ser nula.");
-		} else if (pasos <= 1 || pasos >= 7) {
-			throw new OperationNotSupportedException("ERROR: Movimiento no válido (se sale del tablero).");
 		}
-        switch (direccion) {
-        case NORTE:
-            this.posicion = new Posicion(this.posicion.getFila() + pasos, this.posicion.getColumna());
-            break;
-        case NORESTE:
-            this.posicion = new Posicion(this.posicion.getFila() + pasos, (char) (this.posicion.getColumna() + pasos));
-            break;
-        case NOROESTE:
-        this.posicion = new Posicion(this.posicion.getFila() +pasos, (char) (this.posicion.getColumna() - pasos));
-        break;
-        case SUR:
-            this.posicion = new Posicion(this.posicion.getFila() - pasos, this.posicion.getColumna());
-        break;
-        case SURESTE:
-            this.posicion = new Posicion(this.posicion.getFila() - pasos, (char) (this.posicion.getColumna() + pasos));
-        break;
-        case SUROESTE:
-            this.posicion = new Posicion(this.posicion.getFila() - pasos, (char) (this.posicion.getColumna() -pasos));
-            break;
-        case ESTE:
-            this.posicion = new Posicion(this.posicion.getFila(), (char) (this.posicion.getColumna() + pasos));
-            break;
-        case OESTE:
-            this.posicion= new Posicion(this.posicion.getFila(), (char) (this.posicion.getColumna() - pasos));
-            break;
-        }
+		if (pasos>=8 || pasos<1) {
+			throw new IllegalArgumentException("ERROR: El número de pasos debe estar comprendido entre 1 y 7.");
+		}
+		String movimientoNoValido = "ERROR: Movimiento no válido (se sale del tablero).";
+		
+		switch (direccion) {
+		case NORTE:
+			try {
+				setPosicion(new Posicion(posicion.getFila() + pasos, posicion.getColumna()));
+			} catch (IllegalArgumentException e) {
+				throw new OperationNotSupportedException(movimientoNoValido);
+			}
+			break;
+		case NORESTE:
+			try {
+				setPosicion(new Posicion(posicion.getFila() + pasos, (char)(posicion.getColumna() + pasos)));
+			} catch (IllegalArgumentException e) {
+				throw new OperationNotSupportedException(movimientoNoValido);
+			}
+			break;
+		case ESTE:
+			try {
+				setPosicion(new Posicion(posicion.getFila(), (char)(posicion.getColumna() + pasos)));
+			} catch (IllegalArgumentException e) {
+				throw new OperationNotSupportedException(movimientoNoValido);
+			}
+			break;
+		case SURESTE:
+			try {
+				setPosicion(new Posicion(posicion.getFila() - pasos, (char)(posicion.getColumna() + pasos)));
+			} catch (IllegalArgumentException e) {
+				throw new OperationNotSupportedException(movimientoNoValido);
+			}
+			break;
+		case SUR:
+			try {
+				setPosicion(new Posicion(posicion.getFila() - pasos, posicion.getColumna()));
+			} catch (IllegalArgumentException e) {
+				throw new OperationNotSupportedException(movimientoNoValido);
+			}
+			break;
+		case SUROESTE:
+			try {
+				setPosicion(new Posicion(posicion.getFila() - pasos, (char)(posicion.getColumna() - pasos)));
+			} catch (IllegalArgumentException e) {
+				throw new OperationNotSupportedException(movimientoNoValido);
+			}
+			break;
+		case OESTE:
+			try {
+				setPosicion(new Posicion(posicion.getFila(), (char)(posicion.getColumna() - pasos)));
+			} catch (IllegalArgumentException e) {
+				throw new OperationNotSupportedException(movimientoNoValido);
+			}
+			break;
+		case NOROESTE:
+			try {
+				setPosicion(new Posicion(posicion.getFila() + pasos, (char)(posicion.getColumna() - pasos)));
+			} catch (IllegalArgumentException e) {
+				throw new OperationNotSupportedException(movimientoNoValido);
+			}
+			break;
+				default:
+			break;
+			}
 	}
 
 	@Override

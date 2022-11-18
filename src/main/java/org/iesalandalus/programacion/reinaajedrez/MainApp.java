@@ -2,43 +2,50 @@ package org.iesalandalus.programacion.reinaajedrez;
 
 import java.util.Scanner;
 
+import javax.naming.OperationNotSupportedException;
+
 import org.iesalandalus.programacion.reinaajedrez.modelo.Color;
 import org.iesalandalus.programacion.reinaajedrez.modelo.Reina;
 
 public class MainApp {
-	private Reina reina;
+	
+	private static  Reina reina;
 	private Consola consola;
-
+	static int opcion;
+	
 	private static void crearReinaDefecto() {
-		Reina reinadefecto = new Reina();
+		reina = new Reina();
 
 	}
 
-	private static void crearReinaColor() {
-		Reina reinanegra = new Reina(Color.NEGRO);
-		reinanegra.getColor();
+	private static void crearReinaColor() { 
+		reina = new Reina(Color.NEGRO);
 	}
 
-	private static void mover() { // Preguntar duda
-		Consola.mostrarMenuDirecciones();
-		Consola.elegirDireccion();
+    private static void mover() {
+        try {
+            reina.mover(Consola.elegirDireccion(), Consola.elegirPasos());
+        } catch (OperationNotSupportedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
 
+	private static void mostrarReina() {
+        if (reina == null) {
+            throw new NullPointerException("No existe reina aún.");
 	}
-
-	private static void mostrarReina() { // Preguntar duda
-
+		System.out.println(reina);
 	}
-
 	private static void ejecutarOpcion() {
 		Scanner sc = new Scanner(System.in);
-		int opcion;
 		Consola.mostrarMenu();
 		Consola.elegirOpcionMenu();
 		opcion = sc.nextInt();
-		do {
 			switch (opcion) {
 			case 1:
 				crearReinaDefecto();
+				
 				break;
 			case 2:
 				Consola.elegirOpcion();
@@ -59,12 +66,14 @@ public class MainApp {
 				Consola.despedirse();
 				break;
 			}
-		} while (opcion != 4);
-
+	
 	}
-
 	public static void main(String[] args) {
+
+	do {
 		ejecutarOpcion();
+		mostrarReina();
+	}while(MainApp.opcion != 4);
 
 	}
 }
